@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 from app.auth.route import auth_router
 from app.db.database import setup_db
+from app.env import PORT
 from app.routes.survey import survey_router
 
 app = FastAPI()
@@ -20,4 +21,6 @@ def start_application():
 
 
 def debug_application():
-    uvicorn.run("app:app", host="localhost", port=8000, reload=True)
+    uvicorn.run(
+        "app:app", host="0.0.0.0", port=int(PORT) if PORT else 8000, reload=True
+    )
