@@ -1,0 +1,9 @@
+services:
+  # A Docker web service
+  - type: web
+    name: Linux-and-oss-lovers-community
+    runtime: python
+    plan: free
+    autoDeploy: false
+    buildCommand: pip install poetry && poetry install
+    startCommand: uvicorn main:python main.py
